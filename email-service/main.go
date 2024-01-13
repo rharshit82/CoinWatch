@@ -16,7 +16,7 @@ func main() {
 	}
 
 	gmail := NewGmailSender(
-		os.Getenv("GAMIL_NAME"),
+		os.Getenv("GMAIL_NAME"),
 		os.Getenv("GMAIL_ADDRESS"),
 		os.Getenv("GMAIL_PASSWORD"),
 	)

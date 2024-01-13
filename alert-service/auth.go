@@ -10,8 +10,6 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-// mein yaha peh hee jwt aur login signup banara hun maa chuday
-
 type Auther interface {
 	SignUp(ctx context.Context, req SignUpUserRequest) (SignUpUserResponse, error)
 	Login(ctx context.Context, req LoginUserRequest) (LoginUserResponse, error)
@@ -40,6 +38,7 @@ func (a *auther) SignUp(ctx context.Context, req SignUpUserRequest) (SignUpUserR
 	createUserParams := database.CreateUserParams{
 		Email:          req.Email,
 		HashedPassword: hashedPassword,
+		CreatedAt:      time.Now().String(),
 	}
 
 	res, err := a.db.CreateUser(ctx, createUserParams)
